@@ -106,8 +106,9 @@ int main (void) {
 	cout << "09-Jun-2011 / 21-Jun-2011\n\n"; 
 
 	// Initialize values that we will need later.
-	real(I) = 0.0;
-	imag(I) = 1.0;
+	I = (0.0, 1.0);
+	//real(I) = 0.0;
+	//imag(I) = 1.0;
 	dsa     = 1.0 / double(S_MESH_A - 1);
 	dsb     = 1.0 / double(S_MESH_B - 1);
 	V       = Lx * Ly * Lz; 
@@ -256,15 +257,17 @@ complex<double> calc_error(void) {
 	complex<double> ret_error;
 	int i;
 
-	real(ret_error) = 0.00;
-	imag(ret_error) = 0.00;
+	ret_error = (0.00, 0.00);
+	//real(ret_error) = 0.00;
+	//imag(ret_error) = 0.00;
 
 	for (i=0; i<R_PTS; i++) {
-		real(ret_error) += fabs(1.00 - real(pA[i]) - real(pB[i])); 
+		ret_error += (fabs(1.00 - real(pA[i]) - real(pB[i])), 0.00); 
 	}
 
-	real(ret_error) /= double(R_PTS);
-	imag(ret_error) = 0.00;
+	ret_error /= double(R_PTS);
+	//real(ret_error) /= double(R_PTS);
+	//imag(ret_error) = 0.00;
 
 	printf("Error: %lf\n", real(ret_error));
 	return ret_error;
